@@ -23,12 +23,13 @@ resource "flagsmith_project" "acme_dot_com" {
 
 resource "flagsmith_environment" "production" {
   name                                   = "Production"
-  project_id                             = flagsmith_project.acme_dot_com_website.id
+  project_id                             = flagsmith_project.acme_dot_com.id
 }
 
 resource "flagsmith_feature" "new_homepage_ui" {
   feature_name    = "new_homepage_ui"
   project_uuid    = flagsmith_project.acme_dot_com.uuid
+  description     = ""
 }
 
 resource "flagsmith_segment" "homepage_rollout" {
@@ -41,6 +42,7 @@ resource "flagsmith_segment" "homepage_rollout" {
       "rules": [{
         "conditions": [{
           "operator": "PERCENTAGE_SPLIT",
+          "property": "",
           "value": 10
         }],
         "type": "ANY"
@@ -59,6 +61,7 @@ resource "flagsmith_feature_state" "homepage_rollout" {
   segment_priority  = 0
 
   feature_state_value = {
-    string_value = ""
+    string_value  = ""
+    type          = "unicode"
   }
 }
