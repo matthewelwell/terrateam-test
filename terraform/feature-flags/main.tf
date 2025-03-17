@@ -43,7 +43,7 @@ resource "flagsmith_segment" "homepage_rollout" {
         "conditions": [{
           "operator": "PERCENTAGE_SPLIT",
           "property": "",
-          "value": 10
+          "value": 0
         }],
         "type": "ANY"
       }],
